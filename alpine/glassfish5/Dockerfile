@@ -8,22 +8,22 @@ ENV GLASSFISH_PKG=glassfish-5.0.zip \
     JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 
 RUN \
-	apk --update add \ 
-		openjdk8-jre \
-		curl \
-		unzip
-		
+    apk --update add \ 
+        openjdk8-jre \
+        curl \
+        unzip
+        
 RUN \
     curl -O $GLASSFISH_URL && \
     echo "$MD5 *$GLASSFISH_PKG" | md5sum -c - && \
     unzip -o $GLASSFISH_PKG && \
     rm -f $GLASSFISH_PKG
-	
+    
 RUN \    
     apk del \
         unzip \
         curl   
-		
+        
 EXPOSE 8080 4848
 
 COPY entrypoint.sh /entrypoint.sh
