@@ -11,7 +11,7 @@ RUN \
     apk --update add \ 
         openjdk8-jre \
         curl \
-        unzip
+        unzip 
         
 RUN \
     curl -O $GLASSFISH_URL && \
